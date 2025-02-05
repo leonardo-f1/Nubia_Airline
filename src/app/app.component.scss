@@ -1,0 +1,23 @@
+/* Define estilos globais para a aplicação */
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  ion-app {
+    --ion-background-color: #f4f4f4; /* Define um fundo padrão */
+    --ion-text-color: #333; /* Define a cor do texto */
+  }
+  
+  /* Centraliza os botões dentro da aplicação */
+  ion-button {
+    margin: 10px;
+  }
+  
+  /* Personalização de fontes e espaçamento */
+  h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  

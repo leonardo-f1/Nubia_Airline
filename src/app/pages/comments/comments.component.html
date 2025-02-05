@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Comentários</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Escreva seu comentário</ion-label>
+    <ion-textarea [(ngModel)]="newComment"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addComment()">Adicionar Comentário</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let comment of comments; let i = index">
+      <ion-label>
+        <p>{{ comment.text }}</p>
+        <small>{{ comment.createdAt | date: 'short' }}</small>
+      </ion-label>
+      <ion-button color="danger" (click)="deleteComment(i)">X</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

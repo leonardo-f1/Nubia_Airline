@@ -1,0 +1,128 @@
+/* Garante que todo o conteúdo fique centralizado */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa a tela toda */
+  background-color: black !important; /* Fundo preto */
+}
+
+ion-content {
+  --background: black !important; /* Força o fundo preto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Centraliza todo o conteúdo */
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* Ícone do avião no topo e centralizado */
+.plane-icon {
+  font-size: 120px; /* Mesmo tamanho da página inicial */
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Título e subtítulo alinhados */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Centraliza os inputs */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Estilização dos inputs */
+.input-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+  display: block;
+}
+
+.input-group input {
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: 2px solid red;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Botões centralizados e iguais ao da página inicial */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.login-btn, .signup-btn {
+  width: 100%;
+  margin-top: 15px;
+  --border-radius: 10px;
+  --background: red;
+  --color: white;
+  font-weight: bold;
+  --box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+}
+
+ion-button {
+  width: 100%; /* Faz com que o botão ocupe toda a largura disponível */
+  max-width: 300px; /* Define um tamanho máximo para os botões */
+  height: 50px; /* Define uma altura uniforme */
+  font-size: 18px; /* Ajusta o tamanho do texto */
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.signup-btn {
+  background-color: red; /* Cor igual ao botão Login */
+  color: white;
+}
+
+/* Link para login */
+.login-link {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: white !important;
+}
+
+.login-link a {
+  color: red !important;
+  text-decoration: underline;
+}

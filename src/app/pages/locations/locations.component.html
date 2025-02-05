@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gerenciar Localizações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Nome do Local</ion-label>
+    <ion-input [(ngModel)]="newLocation"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addLocation()">Adicionar Local</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let location of locations">
+      <ion-label>{{ location }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

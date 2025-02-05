@@ -1,0 +1,11 @@
+<ion-list>
+  <ion-item *ngFor="let travel of travels; let i = index">
+    <ion-label>
+      <h2>{{ travel.description }}</h2>
+      <p>{{ travel.location }}</p>
+      <p>{{ travel.startDate | date:'short' }} - {{ travel.endDate | date:'short' }}</p>
+    </ion-label>
+    <ion-button fill="clear" (click)="editTravel(i)">Editar</ion-button>
+    <ion-button fill="clear" color="danger" (click)="deleteTravel(i)">Deletar</ion-button>
+  </ion-item>
+</ion-list>
