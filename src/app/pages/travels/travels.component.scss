@@ -1,0 +1,193 @@
+/* Garante que todo o conteúdo fique centralizado */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #000428, #004e92); /* Gradiente azul escuro */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Overlay escuro para melhorar a legibilidade */
+    z-index: 1;
+  }
+  
+  ion-content {
+    --background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* Centraliza o conteúdo */
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Título */
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Barra de pesquisa */
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 350px;
+    margin-bottom: 30px;
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid white;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .input-container input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Botões */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 350px;
+  }
+  
+  .action-btn {
+    width: 100%;
+    margin-top: 15px;
+    --border-radius: 10px;
+    font-weight: bold;
+    --background: #ff4b5c;
+    --color: white;
+    --box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .action-btn ion-icon {
+    margin-right: 10px;
+  }
+  
+  .action-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Endereço */
+  .address {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+  
+  /* Seções de Destinos */
+  .sections {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 40px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .destination-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .destination-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 48%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .destination-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .destination-info {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .destination-info h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  /* Menu Inferior */
+  .bottom-menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+  }
+  
+  .menu-btn {
+    --background: transparent;
+    --color: white;
+    --box-shadow: none;
+  }
+  
+  .menu-btn ion-icon {
+    font-size: 1.5rem;
+  }

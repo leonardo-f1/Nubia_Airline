@@ -1,0 +1,68 @@
+/* Cor de fundo da página */
+ion-content {
+    --background: linear-gradient(135deg, #000428, #004e92); /* Gradiente azul escuro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+  }
+  
+  /* Lista de Avaliações */
+  ion-list {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  ion-item {
+    --background: rgba(255, 255, 255, 0.2); /* Fundo semi-transparente para cada item */
+    --border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  ion-avatar img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  ion-label h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin: 5px 0;
+  }
+  
+  ion-label p {
+    color: white;
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  /* Botão de Adicionar Avaliação */
+  ion-button {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  
+  /* Menu Inferior */
+  .bottom-menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo do menu inferior */
+    padding: 15px 0;
+  }
+  
+  .menu-btn {
+    --background: transparent;
+    --color: white; /* Branco para o texto */
+    --box-shadow: none;
+  }
+  
+  .menu-btn ion-icon {
+    font-size: 1.5rem;
+  }
+  

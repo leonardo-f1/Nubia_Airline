@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { Travelscomponent } from './travels.component';  // Ajuste o nome para TravelsPage, se necessário
+import { CheckInComponent } from './check-in.component';
 
-describe('TravelsPage', () => {
-  let component: Travelscomponent;
-  let fixture: ComponentFixture<Travelscomponent>;
+describe('CheckInComponent', () => {
+  let component: CheckInComponent;
+  let fixture: ComponentFixture<CheckInComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ Travelscomponent ],  // Certifique-se de usar o nome correto aqui
+      declarations: [ CheckInComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Travelscomponent);  // Ajuste para TravelsPage
+    fixture = TestBed.createComponent(CheckInComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

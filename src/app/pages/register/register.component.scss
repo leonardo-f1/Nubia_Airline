@@ -4,11 +4,23 @@
   justify-content: center;
   align-items: center;
   height: 100vh; /* Ocupa a tela toda */
-  background-color: black !important; /* Fundo preto */
+  background: linear-gradient(135deg, #000428, #004e92); /* Gradiente azul escuro */
+  position: relative;
+  overflow: hidden;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Overlay escuro para melhorar a legibilidade */
+  z-index: 1;
 }
 
 ion-content {
-  --background: black !important; /* Força o fundo preto */
+  --background: transparent; /* Fundo transparente para o gradiente aparecer */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,21 +34,35 @@ ion-content {
   align-items: center;
   text-align: center;
   width: 100%;
+  z-index: 2;
+  position: relative;
 }
 
 /* Ícone do avião no topo e centralizado */
 .plane-icon {
-  font-size: 120px; /* Mesmo tamanho da página inicial */
+  font-size: 100px; /* Reduzi o tamanho para garantir que caiba */
   color: white;
   margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite; /* Animação de flutuação */
+  position: relative; /* Garante que o ícone não saia do container */
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Reduzi a flutuação para evitar que saia do container */
+  }
 }
 
 /* Título e subtítulo alinhados */
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: red;
+  color: white;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto */
 }
 
 .subtitle {
@@ -44,6 +70,7 @@ ion-content {
   color: white;
   text-align: center;
   margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra no texto */
 }
 
 /* Centraliza os inputs */
@@ -71,13 +98,17 @@ ion-content {
 
 .input-group input {
   width: 100%;
-  background-color: black;
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
   color: white;
-  border: 2px solid red;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Borda semi-transparente */
   padding: 10px;
   border-radius: 5px;
   text-align: center;
   font-size: 16px;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Placeholder semi-transparente */
 }
 
 /* Botões centralizados e iguais ao da página inicial */
@@ -93,25 +124,16 @@ ion-content {
   width: 100%;
   margin-top: 15px;
   --border-radius: 10px;
-  --background: red;
+  --background: #ff4b5c; /* Vermelho vibrante */
   --color: white;
   font-weight: bold;
   --box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-ion-button {
-  width: 100%; /* Faz com que o botão ocupe toda a largura disponível */
-  max-width: 300px; /* Define um tamanho máximo para os botões */
-  height: 50px; /* Define uma altura uniforme */
-  font-size: 18px; /* Ajusta o tamanho do texto */
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 5px;
-}
-
-.signup-btn {
-  background-color: red; /* Cor igual ao botão Login */
-  color: white;
+.login-btn:hover, .signup-btn:hover {
+  transform: scale(1.05); /* Efeito de escala ao passar o mouse */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra ao passar o mouse */
 }
 
 /* Link para login */
@@ -123,6 +145,12 @@ ion-button {
 }
 
 .login-link a {
-  color: red !important;
+  color: #ff4b5c !important; /* Vermelho vibrante */
   text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
 }

@@ -4,10 +4,28 @@
     <h1 class="title">NUBIA <br> AIRLINES</h1>
     <p class="subtitle">O Mundo é Teu</p>
 
-    <div class="button-container">
-      <ion-button expand="full" class="login-btn" (click)="irParaLogin()">Login</ion-button>
-      <ion-button expand="full" class="signup-btn" routerLink="/register">Sign Up</ion-button>
+    <div class="input-container">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Digite seu email" [(ngModel)]="email" name="email" required>
+      </div>
 
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite sua senha" [(ngModel)]="password" name="password" required>
+      </div>
+    </div>
+
+    <!-- Mensagem de erro -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div class="button-container">
+      <!-- Botão de login -->
+      <ion-button expand="full" class="login-btn" (click)="onLogin()">Login</ion-button>
+      <!-- Botão de cadastro com routerLink -->
+      <ion-button expand="full" class="signup-btn" routerLink="/register">Sign Up</ion-button>
     </div>
   </div>
 </ion-content>

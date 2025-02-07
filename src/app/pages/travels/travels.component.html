@@ -1,11 +1,82 @@
-<ion-list>
-  <ion-item *ngFor="let travel of travels; let i = index">
-    <ion-label>
-      <h2>{{ travel.description }}</h2>
-      <p>{{ travel.location }}</p>
-      <p>{{ travel.startDate | date:'short' }} - {{ travel.endDate | date:'short' }}</p>
-    </ion-label>
-    <ion-button fill="clear" (click)="editTravel(i)">Editar</ion-button>
-    <ion-button fill="clear" color="danger" (click)="deleteTravel(i)">Deletar</ion-button>
-  </ion-item>
-</ion-list>
+<ion-content class="container">
+  <div class="background-overlay"></div>
+
+  <!-- Conteúdo da página -->
+  <div class="content">
+    <!-- Título -->
+    <h1 class="title">Nubia Airlines</h1>
+
+    <!-- Barra de Pesquisa -->
+    <div class="input-container">
+      <input type="text" placeholder="Pesquise seu destino aqui..." />
+    </div>
+
+    <!-- Botões de ações -->
+    <div class="button-container">
+      <ion-button [routerLink]="['/gerenciar-localizacoes']" expand="full" class="action-btn airplane-btn">
+        <ion-icon name="airplane-outline"></ion-icon> Reservar
+      </ion-button>
+      <ion-button [routerLink]="'/check-in'" expand="full" class="action-btn checkin-btn">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> Check-in
+      </ion-button>
+      <ion-button expand="full" class="action-btn reviews-btn" [routerLink]="'/avaliacoes'">
+        <ion-icon name="star-outline"></ion-icon> Avaliações
+      </ion-button>
+      
+    </div>
+
+    <!-- Seções de Destinos Populares -->
+    <div class="sections">
+      <h2 class="section-title">Destinos Populares</h2>
+      <div class="destination-cards">
+        <div class="destination-card">
+          <img src="path/to/image3.jpg" alt="Destino 3" />
+          <div class="destination-info">
+            <h3>INDONÉSIA</h3>
+          </div>
+        </div>
+        <div class="destination-card">
+          <img src="path/to/image4.jpg" alt="Destino 4" />
+          <div class="destination-info">
+            <h3>JAPÃO</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nova Seção de Destinos Populares (Repetição) -->
+    <div class="sections">
+      <h2 class="section-title">Destinos Populares</h2>
+      <div class="destination-cards">
+        <div class="destination-card">
+          <img src="path/to/image3.jpg" alt="Destino 3" />
+          <div class="destination-info">
+            <h3>INDONÉSIA</h3>
+          </div>
+        </div>
+        <div class="destination-card">
+          <img src="path/to/image4.jpg" alt="Destino 4" />
+          <div class="destination-info">
+            <h3>JAPÃO</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Inferior -->
+    <div class="bottom-menu">
+      <ion-button class="menu-btn" [routerLink]="'/travels'">
+        <ion-icon name="home-outline"></ion-icon> Home
+      </ion-button>
+      <ion-button class="menu-btn" [routerLink]="'/gerenciar-localizacoes'">
+        <ion-icon name="search-outline"></ion-icon> Buscar
+      </ion-button>
+      <ion-button class="menu-btn" [routerLink]="'/avaliacoes'">
+        <ion-icon name="heart-outline"></ion-icon> Favoritos
+      </ion-button>
+      <ion-button class="menu-btn">
+        <ion-icon name="person-outline"></ion-icon> Perfil
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

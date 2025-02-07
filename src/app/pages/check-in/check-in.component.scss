@@ -1,0 +1,89 @@
+/* Garante que todo o conteúdo fique centralizado */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #000428, #004e92); /* Gradiente azul escuro */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Overlay escuro */
+    z-index: 1;
+  }
+  
+  /* Retângulo transparente no centro */
+  .center-rectangle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 868px; /* Ajuste o tamanho conforme necessário */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo transparente com uma leve cor escura */
+    border-radius: 10px;
+    z-index: 3; /* Garante que fique sobre o conteúdo da página */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Garante que o título fique no topo */
+    align-items: center;
+  }
+  
+  /* Título do Retângulo */
+  .rectangle-title {
+    font-size: 2rem;
+    color: white;
+    margin-top: 20px; /* Ajuste conforme necessário */
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  ion-content {
+    --background: transparent; /* Fundo transparente para o gradiente aparecer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* Centraliza o conteúdo */
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Menu Inferior */
+  .bottom-menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+  }
+  
+  .menu-btn {
+    --background: transparent;
+    --color: white; /* Branco para o texto */
+    --box-shadow: none;
+  }
+  
+  .menu-btn ion-icon {
+    font-size: 1.5rem;
+  }
+  

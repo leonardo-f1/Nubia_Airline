@@ -1,20 +1,66 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Gerenciar Localizações</ion-title>
+    <ion-title>Reservar Voo</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
-    <ion-label>Nome do Local</ion-label>
-    <ion-input [(ngModel)]="newLocation"></ion-input>
-  </ion-item>
+<ion-content class="container">
+  <div class="content">
+    <!-- Título da página -->
+    <h1 class="title">Vamos reservar o teu voo!</h1>
 
-  <ion-button expand="full" (click)="addLocation()">Adicionar Local</ion-button>
+    <!-- Formulário de reserva -->
+    <div class="input-container">
+      <ion-label>De...</ion-label>
+      <ion-input [(ngModel)]="departure" placeholder="Cidade de Origem (Ex: Porto)" pattern="^[A-Za-z\s]+$" required></ion-input>
+    </div>
 
-  <ion-list>
-    <ion-item *ngFor="let location of locations">
-      <ion-label>{{ location }}</ion-label>
-    </ion-item>
-  </ion-list>
+    <div class="input-container">
+      <ion-label>Para...</ion-label>
+      <ion-input [(ngModel)]="destination" placeholder="Cidade de Destino (Ex: Tóquio)" pattern="^[A-Za-z\s]+$" required></ion-input>
+    </div>
+
+    <div class="input-container">
+      <ion-label>Data da ida</ion-label>
+      <ion-input [(ngModel)]="departureDate" type="date" [min]="minDate"></ion-input>
+    </div>
+
+    <div class="input-container">
+      <ion-label>Data da volta</ion-label>
+      <ion-input [(ngModel)]="returnDate" type="date" [min]="departureDate"></ion-input>
+    </div>
+
+    <ion-button expand="full" class="action-btn" (click)="searchFlights()">Pesquisar...</ion-button>
+
+    <!-- Botão de Reservar Voo -->
+    <ion-button expand="full" class="reserve-btn" (click)="reserveFlight()">Reservar Voo</ion-button>
+
+    <!-- Detalhes do voo -->
+    <div class="sections" *ngIf="flightDetails">
+      <h2 class="section-title">Próximo voo</h2>
+      <div class="flight-info">
+        <div class="flight-details">
+          <p>{{ flightDetails.departureDate | date }} - {{ flightDetails.returnDate | date }}</p>
+          <p>{{ flightDetails.departureTime }} - {{ flightDetails.arrivalTime }}</p>
+          <p>{{ flightDetails.departure }} → {{ flightDetails.destination }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Inferior -->
+    <div class="bottom-menu">
+      <ion-button class="menu-btn" [routerLink]="'/travels'">
+        <ion-icon name="home-outline"></ion-icon> Home
+      </ion-button>
+      <ion-button class="menu-btn">
+        <ion-icon name="search-outline"></ion-icon> Buscar
+      </ion-button>
+      <ion-button class="menu-btn" [routerLink]="'/avaliacoes'">
+        <ion-icon name="heart-outline"></ion-icon> Favoritos
+      </ion-button>
+      <ion-button class="menu-btn">
+        <ion-icon name="person-outline"></ion-icon> Perfil
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

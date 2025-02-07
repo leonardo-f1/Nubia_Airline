@@ -1,0 +1,37 @@
+<ion-content class="container">
+  <div class="background-overlay"></div>
+
+  <!-- Novo Retângulo Central -->
+  <div class="center-rectangle">
+    <!-- Título do Retângulo -->
+    <h2 class="rectangle-title">Check-in</h2>
+
+    <!-- Exibir dados da reserva -->
+    <div class="reservation-info">
+      <p><strong>Origem:</strong> {{ reserva?.origem }}</p>
+      <p><strong>Destino:</strong> {{ reserva?.destino }}</p>
+      <p><strong>Data de Ida:</strong> {{ reserva?.dataIda }}</p>
+      <p><strong>Data de Volta:</strong> {{ reserva?.dataVolta }}</p>
+    </div>
+  </div>
+
+  <!-- Conteúdo da página -->
+  <div class="content">
+    <!-- Menu Inferior -->
+    <div class="bottom-menu">
+      <ion-button class="menu-btn" [routerLink]="'/travels'">
+        <ion-icon name="home-outline"></ion-icon> Home
+      </ion-button>
+      <ion-button class="menu-btn" [routerLink]="'/gerenciar-localizacoes'">
+        <ion-icon name="search-outline"></ion-icon> Buscar
+      </ion-button>
+      <ion-button class="menu-btn" [routerLink]="'/avaliacoes'">
+        <ion-icon name="heart-outline"></ion-icon> Favoritos
+      </ion-button>
+      <ion-button class="menu-btn">
+        <ion-icon name="person-outline"></ion-icon> Perfil
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
