@@ -19,7 +19,15 @@
       <ion-button expand="full" routerLink="/comments">Ver Comentários</ion-button>
     </ion-item>
     <ion-item>
-      <ion-button expand="full" routerLink="/locations">Gerenciar Localizações</ion-button>
+      <ion-button expand="full" routerLink="/gerenciar-localizacoes">Gerenciar Localizações</ion-button>
     </ion-item>
+    <ion-item>
+      <ion-button expand="full" [routerLink]="'/check-in'">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> Check-in
+      </ion-button>    
+    </ion-item>
+    <ion-button class="full" [routerLink]="'/avaliacoes'">
+      <ion-icon name="star-outline"></ion-icon> Avaliações
+    </ion-button>
   </ion-list>
 </ion-content>
