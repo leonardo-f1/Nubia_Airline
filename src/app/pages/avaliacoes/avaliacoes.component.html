@@ -1,26 +1,83 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Avaliações</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="container">
+  <div class="background-overlay"></div>
 
-<ion-content class="ion-padding">
-  <h2>Bem-vindo à página de Avaliações!</h2>
-  <p>Aqui você pode ver e adicionar avaliações.</p>
+  <div class="content">
+    <h2 class="rectangle-title">Avaliações de Viagens</h2>
+
+    <div class="carrossel">
+      <ion-icon name="chevron-back-circle-outline" class="nav-arrow left" (click)="prevSlide()" aria-label="Anterior"></ion-icon>
+
+      <div class="viagens-container">
+        <div class="viagem-card" *ngFor="let viagem of viagensVisiveis">
+          <div class="image-placeholder" *ngIf="!viagem.imagemUrl">
+            <ion-icon name="image-outline"></ion-icon>
+          </div>
+          <img [src]="viagem.imagemUrl" [alt]="viagem.titulo" class="viagem-imagem" (error)="onImageError(viagem)" />
+          <div class="viagem-info">
+            <h3>{{ viagem.titulo }}</h3>
+            <div class="avaliacao">
+              <ion-icon *ngFor="let star of [].constructor(5); let i = index" 
+                        [name]="i < viagem.pontuacao ? 'star' : 'star-outline'">
+              </ion-icon>
+            </div>
+            <p class="comentario">"{{ viagem.comentarios[0]?.texto }}"</p>
+            <span class="autor">- {{ viagem.comentarios[0]?.nome }}</span>
+          </div>
+        </div>
+      </div>
+
+      <ion-icon name="chevron-forward-circle-outline" class="nav-arrow right" (click)="nextSlide()" aria-label="Próximo"></ion-icon>
+    </div>
+
+    <h2 class="titulo-avaliacoes">As Tuas Avaliações</h2>
+
+    <div class="avaliacao-form">
+      <h3>Faça sua avaliação</h3>
+      <input type="file" (change)="onFileChange($event)" />
+      <input type="text" [(ngModel)]="novaAvaliacao.viagemNome" placeholder="Nome da Viagem" />
+      <div class="stars">
+        <ion-icon *ngFor="let star of [].constructor(5); let i = index" 
+                  [name]="i < novaAvaliacao.pontuacao ? 'star' : 'star-outline'"
+                  (click)="selecionarPontuacao(i + 1)">
+        </ion-icon>
+      </div>
+      <textarea [(ngModel)]="novaAvaliacao.comentario" placeholder="Escreva seu comentário..."></textarea>
+      <ion-button (click)="adicionarAvaliacao()">Enviar Avaliação</ion-button>
+    </div>
+
+    <div class="minhas-avaliacoes">
+      <div *ngFor="let avaliacao of minhasAvaliacoes; let i = index" class="avaliacao-item">
+        <ion-icon name="close-circle" class="fechar-avaliacao" (click)="removerAvaliacao(i)"></ion-icon>
+        <div class="image-placeholder" *ngIf="!avaliacao.imagem">
+          <ion-icon name="image-outline"></ion-icon>
+        </div>
+        <img [src]="avaliacao.imagem" alt="Imagem da viagem" class="imagem-avaliacao" (error)="onImageError(avaliacao)" />
+        <div class="avaliacao-info">
+          <h4>{{ avaliacao.viagemNome }}</h4>
+          <div class="avaliacao">
+            <ion-icon *ngFor="let star of [].constructor(5); let i = index" 
+                      [name]="i < avaliacao.pontuacao ? 'star' : 'star-outline'">
+            </ion-icon>
+          </div>
+          <p class="comentario">"{{ avaliacao.comentario }}"</p>
+          <span class="autor">- {{ avaliacao.nome }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-menu">
+      <ion-button class="menu-btn" [routerLink]="'/travels'">
+        <ion-icon name="home-outline"></ion-icon> Home
+      </ion-button>
+      <ion-button class="menu-btn" [routerLink]="'/gerenciar-localizacoes'">
+        <ion-icon name="search-outline"></ion-icon> Buscar
+      </ion-button>
+      <ion-button class="menu-btn" [routerLink]="'/avaliacoes'">
+        <ion-icon name="heart-outline"></ion-icon> Favoritos
+      </ion-button>
+      <ion-button class="menu-btn">
+        <ion-icon name="person-outline"></ion-icon> Perfil
+      </ion-button>
+    </div>
+  </div>
 </ion-content>
-
-<!-- Menu Inferior -->
-<div class="bottom-menu">
-  <ion-button class="menu-btn" [routerLink]="'/travels'">
-    <ion-icon name="home-outline"></ion-icon> Home
-  </ion-button>
-  <ion-button class="menu-btn" [routerLink]="'/gerenciar-localizacoes'">
-    <ion-icon name="search-outline"></ion-icon> Buscar
-  </ion-button>
-  <ion-button class="menu-btn" [routerLink]="'/avaliacoes'">
-    <ion-icon name="heart-outline"></ion-icon> Favoritos
-  </ion-button>
-  <ion-button class="menu-btn">
-    <ion-icon name="person-outline"></ion-icon> Perfil
-  </ion-button>
-</div>

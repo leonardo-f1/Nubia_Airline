@@ -6,18 +6,17 @@
 
 <ion-content class="container">
   <div class="content">
-    <!-- Título da página -->
     <h1 class="title">Vamos reservar o teu voo!</h1>
 
     <!-- Formulário de reserva -->
     <div class="input-container">
       <ion-label>De...</ion-label>
-      <ion-input [(ngModel)]="departure" placeholder="Cidade de Origem (Ex: Porto)" pattern="^[A-Za-z\s]+$" required></ion-input>
+      <ion-input [(ngModel)]="departure" placeholder="Cidade de Origem" pattern="^[A-Za-z\s]+$" required></ion-input>
     </div>
 
     <div class="input-container">
       <ion-label>Para...</ion-label>
-      <ion-input [(ngModel)]="destination" placeholder="Cidade de Destino (Ex: Tóquio)" pattern="^[A-Za-z\s]+$" required></ion-input>
+      <ion-input [(ngModel)]="destination" placeholder="Cidade de Destino" pattern="^[A-Za-z\s]+$" required></ion-input>
     </div>
 
     <div class="input-container">
@@ -31,18 +30,18 @@
     </div>
 
     <ion-button expand="full" class="action-btn" (click)="searchFlights()">Pesquisar...</ion-button>
-
-    <!-- Botão de Reservar Voo -->
     <ion-button expand="full" class="reserve-btn" (click)="reserveFlight()">Reservar Voo</ion-button>
 
-    <!-- Detalhes do voo -->
+    <!-- Exibir detalhes do voo pesquisado -->
     <div class="sections" *ngIf="flightDetails">
       <h2 class="section-title">Próximo voo</h2>
       <div class="flight-info">
         <div class="flight-details">
-          <p>{{ flightDetails.departureDate | date }} - {{ flightDetails.returnDate | date }}</p>
-          <p>{{ flightDetails.departureTime }} - {{ flightDetails.arrivalTime }}</p>
-          <p>{{ flightDetails.departure }} → {{ flightDetails.destination }}</p>
+          <p><strong>Origem:</strong> {{ flightDetails.departure }}</p>
+          <p><strong>Destino:</strong> {{ flightDetails.destination }}</p>
+          <p><strong>Data da Ida:</strong> {{ flightDetails.departureDate }}</p>
+          <p><strong>Data da Volta:</strong> {{ flightDetails.returnDate }}</p>
+          <p><strong>Horário:</strong> {{ flightDetails.departureTime }} - {{ flightDetails.arrivalTime }}</p>
         </div>
       </div>
     </div>

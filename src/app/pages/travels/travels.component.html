@@ -13,70 +13,68 @@
 
     <!-- Botões de ações -->
     <div class="button-container">
-      <ion-button [routerLink]="['/gerenciar-localizacoes']" expand="full" class="action-btn airplane-btn">
-        <ion-icon name="airplane-outline"></ion-icon> Reservar
+      <ion-button [routerLink]="['/gerenciar-localizacoes']" class="action-btn">
+        Reservar
       </ion-button>
-      <ion-button [routerLink]="'/check-in'" expand="full" class="action-btn checkin-btn">
-        <ion-icon name="checkmark-circle-outline"></ion-icon> Check-in
+      <ion-button [routerLink]="'/check-in'" class="action-btn">
+        Check-in
       </ion-button>
-      <ion-button expand="full" class="action-btn reviews-btn" [routerLink]="'/avaliacoes'">
-        <ion-icon name="star-outline"></ion-icon> Avaliações
+      <ion-button [routerLink]="'/avaliacoes'" class="action-btn">
+        Avaliações
       </ion-button>
-      
     </div>
 
-    <!-- Seções de Destinos Populares -->
-    <div class="sections">
+    <!-- Seção Destinos Populares -->
+    <div class="popular-destinations">
       <h2 class="section-title">Destinos Populares</h2>
-      <div class="destination-cards">
+      <div class="destinations-grid">
+        <!-- Card 1: Torre Eiffel, Paris -->
         <div class="destination-card">
-          <img src="path/to/image3.jpg" alt="Destino 3" />
-          <div class="destination-info">
-            <h3>INDONÉSIA</h3>
-          </div>
+          <img src="assets/imagens/P.jpg" alt="Torre Eiffel, Paris" class="destination-image" />
+          <p class="destination-name">Torre Eiffel, Paris</p>
         </div>
+
+        <!-- Card 2: Coliseu, Roma -->
         <div class="destination-card">
-          <img src="path/to/image4.jpg" alt="Destino 4" />
-          <div class="destination-info">
-            <h3>JAPÃO</h3>
-          </div>
+          <img src="assets/imagens/RM.jpg" alt="Coliseu, Roma" class="destination-image" />
+          <p class="destination-name">Coliseu, Roma</p>
         </div>
       </div>
     </div>
 
-    <!-- Nova Seção de Destinos Populares (Repetição) -->
-    <div class="sections">
-      <h2 class="section-title">Destinos Populares</h2>
-      <div class="destination-cards">
+    <!-- Seção Recomendações -->
+    <div class="popular-destinations">
+      <h2 class="section-title">Recomendações</h2>
+      <div class="destinations-grid">
+        <!-- Card 1: Big Ben, Londres -->
         <div class="destination-card">
-          <img src="path/to/image3.jpg" alt="Destino 3" />
-          <div class="destination-info">
-            <h3>INDONÉSIA</h3>
-          </div>
+          <img src="assets/imagens/BB.jpg" alt="Big Ben, Londres" class="destination-image" />
+          <p class="destination-name">Big Ben, Londres</p>
         </div>
+
+        <!-- Card 2: Sagrada Família, Barcelona -->
         <div class="destination-card">
-          <img src="path/to/image4.jpg" alt="Destino 4" />
-          <div class="destination-info">
-            <h3>JAPÃO</h3>
-          </div>
+          <img src="assets/imagens/S.jpg" alt="Sagrada Família, Barcelona" class="destination-image" />
+          <p class="destination-name">Sagrada Família, Barcelona</p>
         </div>
       </div>
-    </div>
-
-    <!-- Menu Inferior -->
-    <div class="bottom-menu">
-      <ion-button class="menu-btn" [routerLink]="'/travels'">
-        <ion-icon name="home-outline"></ion-icon> Home
-      </ion-button>
-      <ion-button class="menu-btn" [routerLink]="'/gerenciar-localizacoes'">
-        <ion-icon name="search-outline"></ion-icon> Buscar
-      </ion-button>
-      <ion-button class="menu-btn" [routerLink]="'/avaliacoes'">
-        <ion-icon name="heart-outline"></ion-icon> Favoritos
-      </ion-button>
-      <ion-button class="menu-btn">
-        <ion-icon name="person-outline"></ion-icon> Perfil
-      </ion-button>
     </div>
   </div>
+
+  <!-- Menu Inferior -->
+  <div class="bottom-menu">
+    <ion-button class="menu-btn" [routerLink]="'/travels'">
+      <ion-icon name="home-outline"></ion-icon> Home
+    </ion-button>
+    <ion-button class="menu-btn">
+      <ion-icon name="search-outline"></ion-icon> Buscar
+    </ion-button>
+    <ion-button class="menu-btn" [routerLink]="'/avaliacoes'">
+      <ion-icon name="heart-outline"></ion-icon> Favoritos
+    </ion-button>
+    <ion-button class="menu-btn" [routerLink]="'/profile'">
+      <ion-icon name="person-outline"></ion-icon> Perfil
+    </ion-button>
+  </div>
+  
 </ion-content>

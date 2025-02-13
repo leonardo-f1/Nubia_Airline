@@ -2,85 +2,85 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';  // Importando RouterModule
+import { RouterModule } from '@angular/router';
+import { TravelService } from '../../services/travel.service';
 
 @Component({
   selector: 'app-locations',
   standalone: true,
-  imports: [CommonModule, IonicModule, FormsModule, RouterModule],  // Adicionando RouterModule aos imports
+  imports: [CommonModule, IonicModule, FormsModule, RouterModule],
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.scss'],
 })
 export class LocationsComponent {
-  departure: string = '';  // Cidade de origem
-  destination: string = '';  // Cidade de destino
-  departureDate: string = '';  // Data da ida
-  returnDate: string = '';  // Data da volta
-  departureTime: string = '11:00';  // Hora de partida
-  arrivalTime: string = '17:30';  // Hora de chegada
+  departure: string = '';
+  destination: string = '';
+  departureDate: string = '';
+  returnDate: string = '';
+  departureTime: string = '11:00';
+  arrivalTime: string = '17:30';
 
-  // Propriedade para armazenar os detalhes do voo
   flightDetails: any = null;
+  minDate: string = new Date().toISOString().split('T')[0]; // 🔹 Define data mínima para hoje
 
-  // Definindo a data mínima para 2025
-  minDate: string = '2025-01-01'; // Definindo o primeiro dia de 2025
+  constructor(private travelService: TravelService) {}
 
-  // Função chamada ao clicar no botão "Pesquisar"
   searchFlights() {
-    if (this.containsNumbers(this.departure) || this.containsNumbers(this.destination)) {
-      alert('As cidades de origem e destino não podem conter números!');
+    if (!this.isValidInput(this.departure) || !this.isValidInput(this.destination)) {
+      alert('As cidades de origem e destino devem conter apenas letras!');
       return;
     }
 
-    console.log('Pesquisando voos...');
-    console.log(`Origem: ${this.departure}`);
-    console.log(`Destino: ${this.destination}`);
-    console.log(`Data de ida: ${this.departureDate}`);
-    console.log(`Data de volta: ${this.returnDate}`);
+    if (!this.departureDate || !this.returnDate) {
+      alert('Por favor, preencha as datas corretamente.');
+      return;
+    }
 
-    // Exemplo de como os detalhes do voo podem ser atribuídos
+    console.log('✈️ Pesquisando voos...');
     this.flightDetails = {
-      departure: this.departure,
-      destination: this.destination,
+      departure: this.departure.trim(),
+      destination: this.destination.trim(),
       departureDate: this.departureDate,
       returnDate: this.returnDate,
       departureTime: this.departureTime,
       arrivalTime: this.arrivalTime,
     };
+
+    console.log('🔹 Detalhes do voo:', this.flightDetails);
   }
 
-  // Função que verifica se a string contém números
-  containsNumbers(str: string): boolean {
-    return /\d/.test(str); // Verifica se a string contém qualquer número
-  }
-
-  // Função chamada ao clicar no botão "Reservar Voo"
   reserveFlight() {
-    if (this.containsNumbers(this.departure) || this.containsNumbers(this.destination)) {
-      alert('As cidades de origem e destino não podem conter números!');
-      return;  // Se algum campo tiver números, impede a reserva
+    if (!this.flightDetails) {
+      alert('Faça a pesquisa antes de reservar!');
+      return;
     }
 
-    // Verificando se todos os campos necessários foram preenchidos
-    if (!this.departure || !this.destination || !this.departureDate || !this.returnDate) {
-      alert('Por favor, preencha todos os campos antes de fazer a reserva!');
-      return;  // Se algum campo estiver vazio, não prossegue com a reserva
-    }
-
-    // Se todos os campos estiverem preenchidos, prossegue com a reserva
-    console.log('Reserva de voo iniciada...');
-    alert('Reserva de voo realizada com sucesso!');
-
-    // Armazenando a reserva no localStorage
     const reservation = {
-      departure: this.departure,
-      destination: this.destination,
-      departureDate: this.departureDate,
-      returnDate: this.returnDate,
-      departureTime: this.departureTime,
-      arrivalTime: this.arrivalTime,
+      description: `Voo de ${this.departure.trim()} para ${this.destination.trim()}`,
+      type: 'flight',
+      state: 'confirmed',
+      startAt: this.departureDate ? new Date(this.departureDate + 'T00:00:00Z').toISOString() : null,
+      endAt: this.returnDate ? new Date(this.returnDate + 'T00:00:00Z').toISOString() : null,
+      prop1: this.departureTime,
+      prop2: this.arrivalTime,
+      prop3: '',
     };
 
-    localStorage.setItem('flightReservation', JSON.stringify(reservation)); // Armazenando a reserva
+    console.log('📡 Enviando reserva para API:', reservation);
+
+    this.travelService.createTravel(reservation).subscribe(
+      (response) => {
+        console.log('✅ Viagem criada com sucesso:', response);
+        alert('Voo reservado com sucesso!');
+      },
+      (error) => {
+        console.error('❌ Erro ao criar viagem:', error);
+        alert('Erro ao criar viagem. Verifique o console para mais detalhes.');
+      }
+    );
+  }
+
+  private isValidInput(value: string): boolean {
+    return /^[A-Za-zÀ-ÿ\s]+$/.test(value.trim()); // Permite apenas letras e espaços
   }
 }

@@ -6,12 +6,59 @@
     <!-- Título do Retângulo -->
     <h2 class="rectangle-title">Check-in</h2>
 
-    <!-- Exibir dados da reserva -->
-    <div class="reservation-info">
-      <p><strong>Origem:</strong> {{ reserva?.origem }}</p>
-      <p><strong>Destino:</strong> {{ reserva?.destino }}</p>
-      <p><strong>Data de Ida:</strong> {{ reserva?.dataIda }}</p>
-      <p><strong>Data de Volta:</strong> {{ reserva?.dataVolta }}</p>
+    <!-- Formulário para criar/editar viagens -->
+    <div class="trip-form">
+      <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-input [(ngModel)]="novaViagem.description" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Tipo</ion-label>
+        <ion-select [(ngModel)]="novaViagem.type" required>
+          <ion-select-option value="lazer">Lazer</ion-select-option>
+          <ion-select-option value="negocios">Negócios</ion-select-option>
+          <ion-select-option value="outro">Outro</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Estado</ion-label>
+        <ion-input [(ngModel)]="novaViagem.status" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Localização</ion-label>
+        <ion-input [(ngModel)]="novaViagem.location" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Data de Início</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="novaViagem.startDate" required></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Data de Fim</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="novaViagem.endDate" required></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Comentários</ion-label>
+        <ion-textarea [(ngModel)]="novaViagem.comments"></ion-textarea>
+      </ion-item>
+      <ion-button expand="full" *ngIf="!editando" (click)="salvarViagem()">Salvar Viagem</ion-button>
+      <ion-button expand="full" *ngIf="editando" (click)="atualizarViagem()">Atualizar Viagem</ion-button>
+    </div>
+
+    <!-- Lista de viagens -->
+    <div class="trip-list">
+      <h3>Viagens</h3>
+      <ion-list>
+        <ion-item *ngFor="let viagem of viagens">
+          <ion-label>
+            <h2>{{ viagem.description }}</h2>
+            <p>{{ viagem.type }} - {{ viagem.location }}</p>
+            <p>{{ viagem.startDate }} a {{ viagem.endDate }}</p>
+            <p>{{ viagem.comments }}</p>
+          </ion-label>
+          <ion-button fill="clear" (click)="editarViagem(viagem)">Editar</ion-button>
+          <ion-button fill="clear" color="danger" (click)="removerViagem(viagem)">Remover</ion-button>
+        </ion-item>
+      </ion-list>
     </div>
   </div>
 
@@ -34,4 +81,3 @@
     </div>
   </div>
 </ion-content>
-

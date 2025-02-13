@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';  // Importando o IonicModule
+import { RouterModule } from '@angular/router'; // Importando o RouterModule
 
 @Component({
   selector: 'app-home',
-  standalone: true, // ✅ Deve estar aqui
+  standalone: true,  // Tornando o componente standalone
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  imports: [IonicModule, RouterModule], // ✅ Adicionado
+  imports: [IonicModule, RouterModule], // Adicionando o IonicModule e RouterModule
 })
-export class HomePage {}
+export class HomePage {
+
+  constructor() {}
+
+  // Definindo o método irParaLogin
+  irParaLogin() {
+    console.log('Redirecionando para Login');
+    // Aqui você pode adicionar a navegação para a página de Login
+  }
+}
